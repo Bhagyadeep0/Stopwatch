@@ -1,0 +1,59 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #004f7d , #003082);
+}
+
+.contain{
+    background-color: rgba(234, 234, 234, 0.2);
+    padding: 1em 2em;
+    min-width: 14em;
+    min-height: 14em;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.output{
+    padding: 1em 2em;
+    margin-bottom: 1.5em;
+    color: rgba(255, 145, 0);
+    border: 1px solid black;
+    border-radius: 6px;
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3),inset -2px -2px 4px rgba(0, 0, 0, 0.3);
+}
+#hour,#sec,#min{
+    font-size: 2em;
+}
+#mili{
+    font-size: 1em;
+}
+
+button{
+    padding: 0.5em 1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    background: #eaeaea;
+    transition: 0.3s ease;
+    margin: 0.5em 1em;
+}
+
+button:hover,button:focus{
+    background: #aeaeae;
+}
