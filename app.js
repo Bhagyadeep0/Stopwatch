@@ -1,57 +1,78 @@
-let hour = document.getElementById("hour");
-let min = document.getElementById("min");
-let sec = document.getElementById("sec");
-let mili = document.getElementById("mili");
-let startRestBtn = document.getElementById("start-reset");
-let stopBtn = document.getElementById("stop");
+let startBtn = document.getElementById('start'); 
+let stopBtn = document.getElementById('stop'); 
+let resetBtn = document.getElementById('reset'); 
 
-startRestBtn.addEventListener("click", () => {
-  let isRunning = true;
-  switch (isRunning) {
-    case startRestBtn.innerText === "Start":
-      startRestBtn.innerText = "Reset";
-      setTimeout(() => {
-        start();
-      }, 100);
-      break;
-    case startRestBtn.innerText === "Reset":
-      startRestBtn.innerText = "Start";
-      break;
-    default:
-      console.log("Oops something went wrong (>_<)");
-      break;
-  }
-});
+let hour = 0; 
+let minute = 0; 
+let second = 0; 
+let count = 0; 
 
-const start = () => {
-  let j = 1
-  for (let i = 1; i <= 11000; i++) {
+startBtn.addEventListener('click', function () { 
+	timer = true; 
+	stopWatch(); 
+}); 
 
-  if(i){ 
-    // mili.innerText = j++;
-    // mili.innerText === 100 ? 0 : mili.innerText = j++;;
-    if(mili.innerText === 100){
-      mili.innerText === "0";
-      sec.innerText === j++;
-      console.log("now 0")
-    }
-    else{
-      mili.innerText = j++;
-    }
-  }
-  console.log(sec.innerText);
+stopBtn.addEventListener('click', function () { 
+	timer = false; 
+}); 
 
-  }
-};
+resetBtn.addEventListener('click', function () { 
+	timer = false; 
+	hour = 0; 
+	minute = 0; 
+	second = 0; 
+	count = 0; 
+	document.getElementById('hr').innerHTML = "00"; 
+	document.getElementById('min').innerHTML = "00"; 
+	document.getElementById('sec').innerHTML = "00"; 
+	document.getElementById('ms').innerHTML = "00"; 
+}); 
 
-const rest = ()=>{
-  hour.innerText = "00";
-  min.innerText = "00";
-  sec.innerText = "00";
-  mili.innerText = "00";
+function stopWatch() { 
+	if (timer) { 
+		count++; 
+
+		if (count == 100) { 
+			second++; 
+			count = 0; 
+		} 
+
+		if (second == 60) { 
+			minute++; 
+			second = 0; 
+		} 
+
+		if (minute == 60) { 
+			hour++; 
+			minute = 0; 
+			second = 0; 
+		} 
+
+		let hrString = hour; 
+		let minString = minute; 
+		let secString = second; 
+		let countString = count; 
+
+		if (hour < 10) { 
+			hrString = "0" + hrString; 
+		} 
+
+		if (minute < 10) { 
+			minString = "0" + minString; 
+		} 
+
+		if (second < 10) { 
+			secString = "0" + secString; 
+		} 
+
+		if (count < 10) { 
+			countString = "0" + countString; 
+		} 
+
+		document.getElementById('hr').innerHTML = hrString; 
+		document.getElementById('min').innerHTML = minString; 
+		document.getElementById('sec').innerHTML = secString; 
+		document.getElementById('ms').innerHTML = countString; 
+		setTimeout(stopWatch, 10); 
+	} 
 }
-
-stopBtn.addEventListener("click", () => {
-  // startRestBtn.removeEventListener;
-  isRunning = false;
-});

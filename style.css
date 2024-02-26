@@ -34,7 +34,7 @@ body{
     border-radius: 6px;
     box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3),inset -2px -2px 4px rgba(0, 0, 0, 0.3);
 }
-#hour,#sec,#min{
+#hr,#sec,#min{
     font-size: 2em;
 }
 #mili{
